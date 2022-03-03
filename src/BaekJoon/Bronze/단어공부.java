@@ -16,6 +16,7 @@ public class 단어공부 {
 
         int max = 0;
         char answer = '?';
+        //저장된 arr 배열에서 max값을 찾아 많이 증감된 알파벳을 찾는다.
         for (int i = 0; i < arr.length; i++) {
             if(max < arr[i]){
                 max = arr[i];
