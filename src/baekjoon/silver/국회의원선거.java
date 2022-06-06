@@ -21,7 +21,10 @@ public class 국회의원선거 {
             if(maxPerson ==0){
                 break;
             }
-
+            /*
+            * 1번 기호 값 높혀주고
+            * 다른부분은 감소처리.
+            * */
             arr[0]++;
             arr[maxPerson]--;
             result++;
