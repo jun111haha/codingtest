@@ -7,10 +7,10 @@ import java.util.StringTokenizer;
 //https://sangbeomkim.tistory.com/45
 public class 에디터 {
     public static void main(String[] args) throws IOException {
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        String str = bf.readLine();
-        int n = Integer.parseInt(bf.readLine());
+        String str = br.readLine();
+        int n = Integer.parseInt(br.readLine());
 
         Stack<Character> left = new Stack<>();
         Stack<Character> right = new Stack<>();
@@ -20,7 +20,7 @@ public class 에디터 {
         }
 
         for(int i=0; i<n; i++) {
-            StringTokenizer st = new StringTokenizer(bf.readLine());
+            StringTokenizer st = new StringTokenizer(br.readLine());
             String str1 = st.nextToken();
             char ch1 = str1.charAt(0);
             if(ch1 == 'P') {
@@ -29,13 +29,11 @@ public class 에디터 {
                 left.push(ch2);
             } else if(ch1 == 'L') {
                 if(!left.isEmpty()) {
-                    right.push(left.peek());
-                    left.pop();
+                    right.push(left.pop());
                 }
             } else if(ch1 == 'D') {
                 if(!right.isEmpty()) {
-                    left.push(right.peek());
-                    right.pop();
+                    left.push(right.pop());
                 }
             } else if(ch1 == 'B') {
                 if(!left.isEmpty()){
@@ -48,7 +46,7 @@ public class 에디터 {
             left.push(right.pop());
         }
 
-        for(Character c:left){
+        for(Character c : left){
             bw.write(c);
         }
 
