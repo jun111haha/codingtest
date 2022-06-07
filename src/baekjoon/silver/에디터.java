@@ -1,52 +1,57 @@
 package baekjoon.silver;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
-//https://1-7171771.tistory.com/26
+//https://sangbeomkim.tistory.com/45
 public class 에디터 {
     public static void main(String[] args) throws IOException {
-        Stack stL = new Stack<>();
-        Stack stR = new Stack<>();
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String str = bf.readLine();
+        int n = Integer.parseInt(bf.readLine());
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String str = br.readLine();
+        Stack<Character> left = new Stack<>();
+        Stack<Character> right = new Stack<>();
 
-        for(int i=0; i<str.length(); i++){
-            stL.push(str.charAt(i));
+        for(int i=0; i<str.length(); i++) {
+            left.push(str.charAt(i));
         }
 
-        int n = Integer.parseInt(br.readLine());
-
-        for(int i=0; i<n; i++){
-            String com = br.readLine();
-            if(com.equals("L")){
-                if(!stL.empty()){
-                    stR.push(stL.pop());
+        for(int i=0; i<n; i++) {
+            StringTokenizer st = new StringTokenizer(bf.readLine());
+            String str1 = st.nextToken();
+            char ch1 = str1.charAt(0);
+            if(ch1 == 'P') {
+                String str2 = st.nextToken();
+                char ch2 = str2.charAt(0);
+                left.push(ch2);
+            } else if(ch1 == 'L') {
+                if(!left.isEmpty()) {
+                    right.push(left.peek());
+                    left.pop();
                 }
-            }else if(com.equals("D")){
-                if(!stR.empty()){
-                    stL.push(stR.pop());
+            } else if(ch1 == 'D') {
+                if(!right.isEmpty()) {
+                    left.push(right.peek());
+                    right.pop();
                 }
-            }else if(com.equals("B")){
-                if(!stL.empty()){
-                    stL.pop();
+            } else if(ch1 == 'B') {
+                if(!left.isEmpty()){
+                    left.pop();
                 }
-                //포함되어있으면
-            }else if(com.contains("P")){
-                char c = com.charAt(2);
-                stL.push(c);
             }
         }
 
-        while (!stL.empty()){
-            stR.push(stL.pop());
+        while(!right.isEmpty()) {
+            left.push(right.pop());
         }
 
-        while (!stR.empty()){
-            System.out.print(stR.pop());
+        for(Character c:left){
+            bw.write(c);
         }
+
+        bw.close();//스트림을 닫음
     }
 }
