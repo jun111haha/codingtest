@@ -9,6 +9,11 @@ import java.util.Stack;
 '<' || '>' : 커서 위치 변경은 삽입 순서가 바뀌는 것이다.
 '<'을 할 때 keyStack에 가장 최근에 들어간 문자열을 deleteStack에 저장해준다.
 '>'을 할 때는 deleteStack에 있는 문자열을 꺼내준다음 keyStack에 넣어준다.
+
+예제
+2
+<<BP<A>>Cd-
+ThIsIsS3Cr3t
 * */
 public class 키로거 {
     public static void main(String[] args) throws IOException {

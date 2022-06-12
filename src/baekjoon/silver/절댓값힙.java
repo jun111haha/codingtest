@@ -4,7 +4,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
-
+/*
+* 18
+1
+-1
+0
+0
+0
+1
+1
+-1
+-1
+2
+-2
+0
+0
+0
+0
+0
+0
+0
+* */
 class Point implements Comparable<Point>{
     int x, y;
     public Point(int x, int y){
